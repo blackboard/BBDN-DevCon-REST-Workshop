@@ -4,7 +4,8 @@ The purpose of this project is to allow participants in the REST API workshop at
 
 ##Prerequisites
 If the attendee wishes to code along with us, the following things are assumed:
-*	User has installed and started the latest Developer Virtual Machine.
+*	User has installed and started the latest <a href="https://community.blackboard.com/docs/DOC-1649" target="_blank">Developer Virtual Machine</a>.
+*	User has installed and configured <a href="https://git-scm.com/downloads" target="_blank">GIT.
 *	User has cloned this repository to their local working directory.
 * 	User has Java 8 installed and configured to JAVA_HOME.
 
