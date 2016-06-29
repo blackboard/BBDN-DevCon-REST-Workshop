@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = "bbdn.rest.RestDemo"
+
+run {
+	if(System.getProperty("exec.args") != null) {
+    	args System.getProperty("exec.args").split()
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile "org.springframework:spring-web:4.2.4.RELEASE",
+          "com.fasterxml.jackson.core:jackson-databind:2.7.1-1",
+          "javax.servlet:javax.servlet-api:3.1.0",
+          "org.apache.httpcomponents:httpclient:4.5.1", 
+          "org.slf4j:slf4j-simple:1.7.16",
+          "com.sun.xml.security:apache-xmlsec:1.0.1"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
