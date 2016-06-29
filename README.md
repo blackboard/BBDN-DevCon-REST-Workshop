@@ -7,7 +7,8 @@ If the attendee wishes to code along with us, the following things are assumed:
 *	User has installed and started the latest <a href="https://community.blackboard.com/docs/DOC-1649" target="_blank">Developer Virtual Machine</a>.
 *	User has installed and configured <a href="https://git-scm.com/downloads" target="_blank">GIT</a>.
 *	User has cloned this repository to their local working directory.
-* 	User has Java 8 installed and configured to JAVA_HOME.
+* User has Java 8 installed and configured to JAVA_HOME.
+* User has registered for an account on the <a href="https://developer.blackboard.com" target="_blank">Developer Portal</a>.	
 
 ##Caveats
 *	This has not been tested on Windows. It should work, but may require additional configuration steps.
