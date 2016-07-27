@@ -110,9 +110,6 @@ public class RestDemo {
 		// Initialize Handlers
 		DatasourceHandler datasourceHandler = new DatasourceHandler(_hostname);
 		TermHandler termHandler = new TermHandler(_hostname);
-		CourseHandler courseHandler = new CourseHandler(_hostname);
-		UserHandler userHandler = new UserHandler(_hostname);
-		MembershipHandler membershipHandler = new MembershipHandler(_hostname);
 		
 		// Obtain a bearer token
 		Authorizer auth = new Authorizer();
