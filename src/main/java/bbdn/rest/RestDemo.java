@@ -9,9 +9,6 @@ public class RestDemo {
 	
 	public static boolean DEVMODE = false;
 	
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		boolean OPER_ALL = false;
@@ -98,7 +95,9 @@ public class RestDemo {
 			OPER_ALL = true;
 		}
 		
-		log.info("Hello DevCon 2016 Attendees!!!");
+		
+		log.info("Hello REST Workshop Participant!!!");
+		
 
 	}
 

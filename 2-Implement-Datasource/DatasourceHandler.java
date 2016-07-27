@@ -71,11 +71,7 @@ public class DatasourceHandler {
 		
 		try {
 
-			if(RestDemo.DEVMODE) {
-				restTemplate = UnSecurityUtil.getRestTemplate();
-			} else {
-				restTemplate = UnSecurityUtil.getSecureRestTemplate();
-			}
+			restTemplate = UnSecurityUtil.getRestTemplate();
 			  
 	        URI uri = null;
 			try {

@@ -102,11 +102,13 @@ public class RestDemo {
 		
 		
 		Datasource ds = null;
-	
+
+		
 		boolean result = false;
 		
 		// Initialize Handlers
 		DatasourceHandler datasourceHandler = new DatasourceHandler(_hostname);
+
 		
 		// Obtain a bearer token
 		Authorizer auth = new Authorizer();
@@ -124,7 +126,9 @@ public class RestDemo {
 			log.debug("Update DS: " + ds.toString());
 		}
 		
-		// Delete objects	
+		
+
+		
 		if( OPER_ALL || OPER_DATASOURCE) {
 			result = datasourceHandler.deleteObject(token.getToken());
 			log.debug("Delete DS: " + result);

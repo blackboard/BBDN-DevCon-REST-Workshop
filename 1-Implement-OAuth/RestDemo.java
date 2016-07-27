@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import bbdn.rest.objects.*;
-import bbdn.rest.services.*;
 
 
 		
@@ -99,17 +98,14 @@ public class RestDemo {
 		} else {
 			OPER_ALL = true;
 		}
-	
-		Membership mb = null;
 		
-		boolean result = false;
 		
 		// Obtain a bearer token
 		Authorizer auth = new Authorizer();
 		Token token = auth.authorize();
 		
-		log.info("token: " + token.toString());
-	
+		log.debug("token: " + token.toString());
+		
 	}
 
 }

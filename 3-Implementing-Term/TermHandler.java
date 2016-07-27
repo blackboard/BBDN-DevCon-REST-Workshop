@@ -77,13 +77,8 @@ public class TermHandler {
 		
 		try {
 
-			if(RestDemo.DEVMODE) {
-				restTemplate = UnSecurityUtil.getRestTemplate();
-			} else {
-				restTemplate = UnSecurityUtil.getSecureRestTemplate();
-			}
-			  
-	        
+			restTemplate = UnSecurityUtil.getRestTemplate();
+				        
 	        URI uri = null;
 			try {
 				uri = new URI(_hostname + sUri);

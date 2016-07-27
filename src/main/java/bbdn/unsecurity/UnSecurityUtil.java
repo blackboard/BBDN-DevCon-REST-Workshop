@@ -14,45 +14,32 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
+import bbdn.rest.RestDemo;
+
 public abstract class UnSecurityUtil {
 	
 	public static RestTemplate getRestTemplate() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
-
-		SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom()
-		        .loadTrustMaterial(null, acceptingTrustStrategy)
-		        .build();
-
-		SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
-
-		CloseableHttpClient httpClient = HttpClients.custom()
-		        .setSSLSocketFactory(csf)
-		        .build();
 		
 		// Workaround to allow for PATCH requests
 		HttpComponentsClientHttpRequestFactory requestFactory =
 		        new HttpComponentsClientHttpRequestFactory();
-
-		requestFactory.setHttpClient(httpClient);
 		
-		RestTemplate restTemplate = new RestTemplate(requestFactory);
-		
-		// Workaround for allowing unsuccessful HTTP Errors to still print to the screen
-		restTemplate.setErrorHandler(new DefaultResponseErrorHandler(){
-		    protected boolean hasError(HttpStatus statusCode) {
-		        return false;
-		    }});
-
-
-		return(restTemplate);
-		
-	}
+		if(RestDemo.DEVMODE) {
+			TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 	
-	public static RestTemplate getSecureRestTemplate() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		// Workaround to allow for PATCH requests
-		HttpComponentsClientHttpRequestFactory requestFactory =
-		        new HttpComponentsClientHttpRequestFactory();
-
+			SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom()
+			        .loadTrustMaterial(null, acceptingTrustStrategy)
+			        .build();
+	
+			SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+	
+			CloseableHttpClient httpClient = HttpClients.custom()
+			        .setSSLSocketFactory(csf)
+			        .build();
+			
+			requestFactory.setHttpClient(httpClient);
+		}
+		
 		RestTemplate restTemplate = new RestTemplate(requestFactory);
 		
 		// Workaround for allowing unsuccessful HTTP Errors to still print to the screen
