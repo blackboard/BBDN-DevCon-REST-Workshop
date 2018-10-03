@@ -11,6 +11,10 @@ import java.util.ListIterator;
 
 import bbdn.caching.CacheUtil;
 
+import bbdn.rest.announcement.*;
+import bbdn.rest.assignment.*;
+import bbdn.rest.calendar.*;
+import bbdn.rest.column.*;
 import bbdn.rest.common.*;
 import bbdn.rest.content.*;
 import bbdn.rest.course.*;
@@ -212,7 +216,7 @@ public class RestDemo {
 
 		log.info("ParentId:" + parentId);
 
-		Availability availability = new Availability();
+		/*Availability availability = new Availability();
 		availability.setAvailable("Yes");
 
 
@@ -228,8 +232,91 @@ public class RestDemo {
 
 		Content folder = conS.createChildContent(newFolder, course.getId(), parentId);
 
-		log.info("Folder:" + folder.toString());
+		log.info("Folder:" + folder.toString());*/
 
+		/* Part 9 - Upload a file and create an assignment */
+		/*List<Content> myFolders = conS.readAllChildContent(course.getId(), parentId);
+
+		log.info("My Folder:" + myFolders.toString());
+
+		String folderId = "";
+
+		ListIterator<Content> folderCursor = myFolders.listIterator();
+		while(folderCursor.hasNext()) {
+			Content currContent = folderCursor.next();
+			log.info("Current Folder:" + currContent.getTitle());
+
+			if(currContent.getTitle().equals(RestConstants.CONTENT_FOLDER_TITLE)) {
+				folderId = currContent.getId();
+			}
+		}
+
+		log.info("folderId:" + folderId);
+
+		String xid = "";
+
+		try {
+			xid = FileUploadUtil.uploadSingleFile();
+		} catch(Exception e) {
+			log.error("Exception uploading file");
+		}
+
+		log.info("XID:" + xid);
+
+		AssignmentService aS = new AssignmentService();
+
+		LocalDateTime start = LocalDateTime.now();
+	  LocalDateTime end = start.plusMonths(3);
+
+		AdaptiveRelease adaptiveRelease = new AdaptiveRelease();
+		adaptiveRelease.setStart(start + "Z");
+		adaptiveRelease.setEnd(end + "Z");
+
+		Availability availability = new Availability(false,true);
+		availability.setAvailable("Yes");
+
+		availability.setAdaptiveRelease(adaptiveRelease);
+
+		Grading grading = new Grading();
+		grading.setDue(duedate);
+		grading.setAttemptsAllowed(10);
+		grading.setIsUnlimitedAttemptsAllowed(false);
+
+		Score score = new Score();
+		score.setPossible(100);
+
+		NewAssignment newAssignment = new NewAssignment();
+		newAssignment.setParentId(folderId);
+		newAssignment.setTitle(RestConstants.ASSIGNMENT_TITLE);
+		newAssignment.setInstructions(RestConstants.ASSIGNMENT_INSTRUCTIONS);
+		newAssignment.setDescription(RestConstants.ASSIGNMENT_DESCRIPTION);
+		newAssignment.setFileUploadIds(new String[] {xid});
+		newAssignment.setAvailability(availability);
+		newAssignment.setGrading(grading);
+		newAssignment.setScore(score);
+
+		Assignment assignment = aS.create(newAssignment, course.getId());
+
+		log.info("Assignment:" + assignment.toString());*/
+
+		/* Part 10 - Create Calendar Item */
+		CalendarService calS = new CalendarService();
+
+		LocalDateTime now = LocalDateTime.now();
+	  LocalDateTime start = now.plusMonths(3);
+	  LocalDateTime end = start.plusHours(1);
+
+		Calendar newCal = new Calendar();
+		newCal.setType("Course");
+		newCal.setCalendarId(course.getId());
+		newCal.setTitle(RestConstants.CALENDAR_TITLE);
+		newCal.setDescription(RestConstants.CALENDAR_DESCRIPTION);
+		newCal.setStart(start + "Z");
+		newCal.setEnd(end + "Z");
+
+		Calendar calendar = calS.create(newCal);
+
+		log.info("Calendar:" + calendar.toString());
 
 	}
 }

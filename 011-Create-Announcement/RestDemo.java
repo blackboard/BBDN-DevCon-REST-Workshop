@@ -14,6 +14,7 @@ import bbdn.caching.CacheUtil;
 import bbdn.rest.announcement.*;
 import bbdn.rest.assignment.*;
 import bbdn.rest.calendar.*;
+import bbdn.rest.column.*;
 import bbdn.rest.common.*;
 import bbdn.rest.content.*;
 import bbdn.rest.course.*;

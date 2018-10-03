@@ -11,8 +11,10 @@ import java.util.ListIterator;
 
 import bbdn.caching.CacheUtil;
 
+import bbdn.rest.announcement.*;
 import bbdn.rest.assignment.*;
 import bbdn.rest.calendar.*;
+import bbdn.rest.column.*;
 import bbdn.rest.common.*;
 import bbdn.rest.content.*;
 import bbdn.rest.course.*;
@@ -217,7 +219,6 @@ public class RestDemo {
 		/*Availability availability = new Availability();
 		availability.setAvailable("Yes");
 
-
 		ContentHandler contentHandler = new ContentHandler();
 		contentHandler.setId(RestConstants.CONTENT_FOLDER_HANDLER);
 
@@ -233,7 +234,7 @@ public class RestDemo {
 		log.info("Folder:" + folder.toString());*/
 
 		/* Part 9 - Upload a file and create an assignment */
-		/*List<Content> myFolders = conS.readAllChildContent(course.getId(), parentId);
+		List<Content> myFolders = conS.readAllChildContent(course.getId(), parentId);
 
 		log.info("My Folder:" + myFolders.toString());
 
@@ -272,11 +273,10 @@ public class RestDemo {
 
 		Availability availability = new Availability(false,true);
 		availability.setAvailable("Yes");
-
 		availability.setAdaptiveRelease(adaptiveRelease);
 
 		Grading grading = new Grading();
-		grading.setDue(duedate);
+		grading.setDue(end + "Z");
 		grading.setAttemptsAllowed(10);
 		grading.setIsUnlimitedAttemptsAllowed(false);
 
@@ -295,26 +295,7 @@ public class RestDemo {
 
 		Assignment assignment = aS.create(newAssignment, course.getId());
 
-		log.info("Assignment:" + assignment.toString());*/
-
-		/* Part 10 - Create Calendar Item */
-		CalendarService calS = new CalendarService();
-
-		LocalDateTime now = LocalDateTime.now();
-	  LocalDateTime start = now.plusMonths(3);
-	  LocalDateTime end = start.plusHours(1);
-
-		Calendar newCal = new Calendar();
-		newCal.setType("Course");
-		newCal.setCalendarId(course.getId());
-		newCal.setTitle(RestConstants.CALENDAR_TITLE);
-		newCal.setDescription(RestConstants.CALENDAR_DESCRIPTION);
-		newCal.setStart(start + "Z");
-		newCal.setEnd(end + "Z");
-
-		Calendar calendar = calS.create(newCal);
-
-		log.info("Calendar:" + calendar.toString());
+		log.info("Assignment:" + assignment.toString());
 
 	}
 }

@@ -11,7 +11,10 @@ import java.util.ListIterator;
 
 import bbdn.caching.CacheUtil;
 
+import bbdn.rest.announcement.*;
 import bbdn.rest.assignment.*;
+import bbdn.rest.calendar.*;
+import bbdn.rest.column.*;
 import bbdn.rest.common.*;
 import bbdn.rest.content.*;
 import bbdn.rest.course.*;
@@ -216,6 +219,7 @@ public class RestDemo {
 		/*Availability availability = new Availability();
 		availability.setAvailable("Yes");
 
+
 		ContentHandler contentHandler = new ContentHandler();
 		contentHandler.setId(RestConstants.CONTENT_FOLDER_HANDLER);
 
@@ -231,7 +235,7 @@ public class RestDemo {
 		log.info("Folder:" + folder.toString());*/
 
 		/* Part 9 - Upload a file and create an assignment */
-		List<Content> myFolders = conS.readAllChildContent(course.getId(), parentId);
+		/*List<Content> myFolders = conS.readAllChildContent(course.getId(), parentId);
 
 		log.info("My Folder:" + myFolders.toString());
 
@@ -270,10 +274,11 @@ public class RestDemo {
 
 		Availability availability = new Availability(false,true);
 		availability.setAvailable("Yes");
+
 		availability.setAdaptiveRelease(adaptiveRelease);
 
 		Grading grading = new Grading();
-		grading.setDue(end + "Z");
+		grading.setDue(duedate);
 		grading.setAttemptsAllowed(10);
 		grading.setIsUnlimitedAttemptsAllowed(false);
 
@@ -292,7 +297,75 @@ public class RestDemo {
 
 		Assignment assignment = aS.create(newAssignment, course.getId());
 
-		log.info("Assignment:" + assignment.toString());
+		log.info("Assignment:" + assignment.toString());*/
+
+		/* Part 10 - Create Calendar Item */
+		/*CalendarService calS = new CalendarService();
+
+		LocalDateTime now = LocalDateTime.now();
+	  LocalDateTime start = now.plusMonths(3);
+	  LocalDateTime end = start.plusHours(1);
+
+		Calendar newCal = new Calendar();
+		newCal.setType("Course");
+		newCal.setCalendarId(course.getId());
+		newCal.setTitle(RestConstants.CALENDAR_TITLE);
+		newCal.setDescription(RestConstants.CALENDAR_DESCRIPTION);
+		newCal.setStart(start + "Z");
+		newCal.setEnd(end + "Z");
+
+		Calendar calendar = calS.create(newCal);
+
+		log.info("Calendar:" + calendar.toString());*/
+
+		/* Part 11 - Create System Announcement */
+		/*AnnouncementService annS = new AnnouncementService();
+
+		LocalDateTime start = LocalDateTime.now();
+	  LocalDateTime end = start.plusMonths(3);
+
+		Duration duration = new Duration();
+		duration.setType("Restricted");
+		duration.setStart(start + "Z");
+		duration.setEnd(end + "Z");
+
+		//AnnouncementAvailability availability = new AnnouncementAvailability();
+		Availability availability = new Availability();
+		availability.setDuration(duration);
+
+		Announcement newAnn = new Announcement();
+		newAnn.setTitle(RestConstants.ANNOUNCEMENT_TITLE);
+		newAnn.setBody(RestConstants.ANNOUNCEMENT_BODY);
+		newAnn.setShowAtLogin(false);
+		newAnn.setShowInCourses(true);
+		newAnn.setAvailability(availability);
+
+		log.info("NEWANN:" + newAnn.toString());
+
+		Announcement announcement = annS.create(newAnn);
+
+		log.info("Announcement:" + announcement.toString());*/
+
+		/* Part 12 - Get Column */
+		ColumnService colS = new ColumnService();
+
+		List<Column> columns = colS.readAll(course.getId());
+
+		String columnId = "";
+
+		ListIterator<Column> columnCursor = columns.listIterator();
+		while(columnCursor.hasNext()) {
+			Column currColumn = columnCursor.next();
+			log.info("Current Column:" + currColumn.getName());
+
+			if(currColumn.getName().equals(RestConstants.ASSIGNMENT_TITLE)) {
+				columnId = currColumn.getId();
+			}
+		}
+
+		log.info("columnId:" + columnId);
+
+
 
 	}
 }

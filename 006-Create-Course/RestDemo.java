@@ -11,6 +11,10 @@ import java.util.ListIterator;
 
 import bbdn.caching.CacheUtil;
 
+import bbdn.rest.announcement.*;
+import bbdn.rest.assignment.*;
+import bbdn.rest.calendar.*;
+import bbdn.rest.column.*;
 import bbdn.rest.common.*;
 import bbdn.rest.content.*;
 import bbdn.rest.course.*;
@@ -19,6 +23,7 @@ import bbdn.rest.membership.*;
 import bbdn.rest.oauth.*;
 import bbdn.rest.term.*;
 import bbdn.rest.user.*;
+import bbdn.rest.util.*;
 
 import bbdn.rest.RestConfig;
 import bbdn.rest.RestConstants;
@@ -111,10 +116,7 @@ public class RestDemo {
 		/* Part Five - Create the Student */
 		User prof = us.read("externalId:" + RestConstants.USER_PROF_ID);
 
-		/*Availability availability = new Availability();
-		availability.setAvailable("Yes");
-
-		Contact contact = new Contact();
+		/*Contact contact = new Contact();
 		contact.setEmail(RestConstants.USER_STUD_EMAIL);
 
 		Name name = new Name();
@@ -139,7 +141,7 @@ public class RestDemo {
 
 		CourseService cs = new CourseService();
 
-		/*Duration duration = new Duration();
+		Duration duration = new Duration();
 	  Availability availability = new Availability(true);
 
 	  LocalDateTime start = LocalDateTime.now();
@@ -163,33 +165,6 @@ public class RestDemo {
 
 		Course course = cs.create(tempCs);
 
-		log.info("Course:" + course.toString());*/
-
-		/* Part Seven - Enroll Users */
-		Course course = cs.read("externalId:" + RestConstants.COURSE_ID);
-
-		MembershipService ms = new MembershipService();
-
-		Availability availability = new Availability();
-		availability.setAvailable("Yes");
-
-		Membership tempPM = new Membership();
-		tempPM.setDataSourceId(datasource.getId());
-		tempPM.setAvailability(availability);
-		tempPM.setCourseRoleId("Instructor");
-
-		Membership pMembership = ms.create(tempPM, prof.getId(), course.getId());
-
-		log.info("Professor Membership:" + pMembership.toString());
-
-		Membership tempSM = new Membership();
-		tempSM.setDataSourceId(datasource.getId());
-		tempSM.setAvailability(availability);
-		tempSM.setCourseRoleId("Student");
-
-		Membership sMembership = ms.create(tempSM, stud.getId(), course.getId());
-
-		log.info("Student Membership:" + sMembership.toString());
-
+		log.info("Course:" + course.toString());
 	}
 }

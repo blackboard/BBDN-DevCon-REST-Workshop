@@ -11,6 +11,10 @@ import java.util.ListIterator;
 
 import bbdn.caching.CacheUtil;
 
+import bbdn.rest.announcement.*;
+import bbdn.rest.assignment.*;
+import bbdn.rest.calendar.*;
+import bbdn.rest.column.*;
 import bbdn.rest.common.*;
 import bbdn.rest.content.*;
 import bbdn.rest.course.*;
@@ -19,6 +23,7 @@ import bbdn.rest.membership.*;
 import bbdn.rest.oauth.*;
 import bbdn.rest.term.*;
 import bbdn.rest.user.*;
+import bbdn.rest.util.*;
 
 import bbdn.rest.RestConfig;
 import bbdn.rest.RestConstants;
