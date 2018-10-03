@@ -2,6 +2,7 @@
 
 
 1. Register for Key and Secret
+  Visit the Developer Community site to discover the process by which you [register for a key and secret](https://community.blackboard.com/docs/DOC-1579) in the [Developer Portal](https://developer.blackboard.com).
 
 2. Create User with the following entitlements
  * course.calendar-entry.CREATE
@@ -20,12 +21,14 @@
  * system.user.CREATE
 
 3. Register Application with Learn
+  Visit the Developer Community site to discover the process by which you [register your application with Blackboard Learn](https://community.blackboard.com/docs/DOC-1580-managing-rest-integrations-in-learn-the-rest-integrations-tool-for-system-administrators).
 
-4. Configure Project RestConfig.java
+4. Configure Project [RestConfig.java](blob/master/src/main/java/bbdn/rest/RestConfig.java)
  * host domain
  * key
  * secret
  * secure
+
 5. Get a token
 ```java
   Authorizer authorizer = new Authorizer();
