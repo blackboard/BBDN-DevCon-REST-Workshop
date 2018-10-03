@@ -23,7 +23,7 @@
 3. Register Application with Learn
   Visit the Developer Community site to discover the process by which you [register your application with Blackboard Learn](https://community.blackboard.com/docs/DOC-1580-managing-rest-integrations-in-learn-the-rest-integrations-tool-for-system-administrators).
 
-4. Configure Project [RestConfig.java](blob/master/src/main/java/bbdn/rest/RestConfig.java)
+4. Configure Project [RestConfig.java](src/main/java/bbdn/rest/RestConfig.java)
  * host domain
  * key
  * secret
