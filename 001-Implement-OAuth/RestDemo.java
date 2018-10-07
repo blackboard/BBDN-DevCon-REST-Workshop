@@ -38,6 +38,13 @@ public class RestDemo {
 
 		log.info("Hello REST Workshop Participant!!!");
 
+		/* Part One - Get Authorization Token */
+		Authorizer authorizer = new Authorizer();
+
+	  	authorizer.authorize();
+
+		log.info("Token: " + CacheUtil.getValidToken());
+
 	}
 
 }

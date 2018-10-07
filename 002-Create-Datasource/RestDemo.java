@@ -38,6 +38,23 @@ public class RestDemo {
 
 		log.info("Hello REST Workshop Participant!!!");
 
+		/* Part One - Get Authorization Token */
+		Authorizer authorizer = new Authorizer();
+
+	  authorizer.authorize();
+
+		log.info("Token: " + CacheUtil.getValidToken());
+
+		/* Part Two - Create Datasource Key */
+	  DatasourceService dss = new DatasourceService();
+		Datasource tempDs = new Datasource();
+	  tempDs.setExternalId(RestConstants.DATASOURCE_ID);
+	  tempDs.setDescription(RestConstants.DATASOURCE_DESCRIPTION);
+
+	  Datasource datasource = dss.create(tempDs);
+
+	  log.info("Datasource: " + datasource.toString());
+
 	}
 
 }
