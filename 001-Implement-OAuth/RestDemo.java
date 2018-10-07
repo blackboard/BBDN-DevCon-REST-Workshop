@@ -41,7 +41,7 @@ public class RestDemo {
 		/* Part One - Get Authorization Token */
 		Authorizer authorizer = new Authorizer();
 
-	  authorizer.authorize();
+	  	authorizer.authorize();
 
 		log.info("Token: " + CacheUtil.getValidToken());
 

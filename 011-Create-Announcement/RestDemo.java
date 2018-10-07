@@ -322,14 +322,14 @@ public class RestDemo {
 		AnnouncementService annS = new AnnouncementService();
 
 		LocalDateTime start = LocalDateTime.now();
-	  LocalDateTime end = start.plusMonths(3);
+	  	LocalDateTime end = start.plusMonths(3);
 
 		Duration duration = new Duration();
 		duration.setType("Restricted");
 		duration.setStart(start + "Z");
 		duration.setEnd(end + "Z");
 
-		AnnouncementAvailability availability = new AnnouncementAvailability();
+		Availability availability = new Availability();
 		availability.setDuration(duration);
 
 		Announcement newAnn = new Announcement();
