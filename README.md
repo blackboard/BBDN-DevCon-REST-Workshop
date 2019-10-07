@@ -6,9 +6,9 @@ The purpose of this project is demonstrate the use of the Blackboard Learn REST 
 The following prerequisites are assumed:
 *	User has a Blackboard Learn Instance available.
 *	User has installed and configured <a href="https://git-scm.com/downloads" target="_blank">GIT</a>.
-*	User has installed Gradle. This tutorial was built with [Gradle 2.3](https://gradle.org/install/).
+*	User has installed Gradle. This tutorial was built with [Gradle 5.6.2](https://gradle.org/install/).
 *	User has cloned this repository to their local working directory.
-* 	User has Java 8 installed and configured to JAVA_HOME.
+* 	User has Java 11 installed and configured to JAVA_HOME.
 * 	User has registered for an account on the <a href="https://developer.blackboard.com" target="_blank">Developer Portal</a>.
 
 ## Caveats
