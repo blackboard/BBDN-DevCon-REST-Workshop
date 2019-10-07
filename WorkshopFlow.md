@@ -12,7 +12,8 @@
  * course.gradebook.MODIFY
  * course.user-enroll.EXECUTE
  * course.user-role.MODIFY
- * system.announcements.CREATE
+ * course.announcements.CREATE
+ * course.announcements.VIEW
  * system.course.CREATE
  * system.course.VIEW
  * system.datasource.manager.VIEW

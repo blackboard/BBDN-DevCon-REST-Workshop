@@ -335,13 +335,11 @@ public class RestDemo {
 		Announcement newAnn = new Announcement();
 		newAnn.setTitle(RestConstants.ANNOUNCEMENT_TITLE);
 		newAnn.setBody(RestConstants.ANNOUNCEMENT_BODY);
-		newAnn.setShowAtLogin(false);
-		newAnn.setShowInCourses(true);
 		newAnn.setAvailability(availability);
 
 		log.info("NEWANN:" + newAnn.toString());
 
-		Announcement announcement = annS.create(newAnn);
+		Announcement announcement = annS.create(newAnn, course.getId);
 
 		log.info("Announcement:" + announcement.toString());
 

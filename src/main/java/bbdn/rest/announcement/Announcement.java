@@ -14,7 +14,7 @@ import bbdn.rest.common.Availability;
 public class Announcement extends BaseObject {
 
 	@JsonProperty("id")
-  private String id;
+  	private String id;
 
 	@JsonProperty("title")
 	private String title;
@@ -23,18 +23,7 @@ public class Announcement extends BaseObject {
 	private String body;
 
 	@JsonProperty("availability")
-  //private AnnouncementAvailability availability;
 	private Availability availability;
-
-	@JsonProperty("showAtLogin")
-  private boolean showAtLogin;
-
-	@JsonProperty("showInCourses")
-  private boolean showInCourses;
-
-	@JsonProperty("created")
-	@JsonInclude(Include.NON_NULL)
-  private String created;
 
 	public Announcement() {
 		super();
@@ -107,53 +96,7 @@ public class Announcement extends BaseObject {
 		this.availability = availability;
 	}
 
-	/**
-	* Returns value of showAtLogin
-	* @return
-	*/
-	public boolean isShowAtLogin() {
-		return showAtLogin;
-	}
-
-	/**
-	* Sets new value of showAtLogin
-	* @param
-	*/
-	public void setShowAtLogin(boolean showAtLogin) {
-		this.showAtLogin = showAtLogin;
-	}
-
-	/**
-	* Returns value of showInCourses
-	* @return
-	*/
-	public boolean isShowInCourses() {
-		return showInCourses;
-	}
-
-	/**
-	* Sets new value of showInCourses
-	* @param
-	*/
-	public void setShowInCourses(boolean showInCourses) {
-		this.showInCourses = showInCourses;
-	}
-
-	/**
-	* Returns value of created
-	* @return
-	*/
-	public String getCreated() {
-		return created;
-	}
-
-	/**
-	* Sets new value of created
-	* @param
-	*/
-	public void setCreated(String created) {
-		this.created = created;
-	}
+	
 
 
 	/**
@@ -163,8 +106,7 @@ public class Announcement extends BaseObject {
 	@Override
 	public String toString() {
 		String avl = availability != null ? availability.toString() : "null";
-		String cr = created != null ? created : "null";
-
-		return "Announcement [id=" + id + ", title=" + title + ", body=" + body + ", availability=" + availability + ", showAtLogin=" + showAtLogin + ", showInCourses=" + showInCourses + ", created=" + cr + ", " + super.toString() + "]";
+		
+		return "Announcement [id=" + id + ", title=" + title + ", body=" + body + ", availability=" + availability +  ", " + super.toString() + "]";
 	}
 }
