@@ -49,7 +49,7 @@ public class AnnouncementService {
 	 */
 	public Announcement create(Announcement announcement, String crsId) {
 		log.info("CREATE");
-		String endpoint = RestConstants.ANNOUNCEMENT_PATH + "/" + crsId;
+		String endpoint = RestConstants.ANNOUNCEMENT_PATH + "/" + crsId + "/announcements";
 
 		List<Announcement> announcements = sendRequest(endpoint, HttpMethod.POST, announcement, false);
 

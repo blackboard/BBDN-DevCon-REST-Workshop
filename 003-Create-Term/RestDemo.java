@@ -32,8 +32,6 @@ public class RestDemo {
 
 	private static final Logger log = LoggerFactory.getLogger(RestDemo.class);
 
-	public static boolean DEVMODE = false;
-
 	public static void main(String[] args) {
 
 		log.info("Hello REST Workshop Participant!!!");
@@ -41,20 +39,13 @@ public class RestDemo {
 		/* Part One - Get Authorization Token */
 		Authorizer authorizer = new Authorizer();
 
-	  authorizer.authorize();
+	  	authorizer.authorize();
 
 		log.info("Token: " + CacheUtil.getValidToken());
 
-		/* Part Two - Create Datasource Key */
-	  DatasourceService dss = new DatasourceService();
-		/*Datasource tempDs = new Datasource();
-	  tempDs.setExternalId(RestConstants.DATASOURCE_ID);
-	  tempDs.setDescription(RestConstants.DATASOURCE_DESCRIPTION);
-
-	  Datasource datasource = dss.create(tempDs);
-
-	  log.info("Datasource: " + datasource.toString());*/
-
+		/* Part Two - Get Datasource Key */
+	  	DatasourceService dss = new DatasourceService();
+		
 		/* Part Three - Create a Term */
 		Datasource datasource = dss.read("externalId:" + RestConstants.DATASOURCE_ID);
 
@@ -62,27 +53,27 @@ public class RestDemo {
 		Term tempTm = new Term();
 
 		Duration duration = new Duration();
-	  Availability availability = new Availability(true);
+	  	Availability availability = new Availability(true);
 
-	  LocalDateTime start = LocalDateTime.now();
-	  LocalDateTime end = start.plusMonths(3);
+		LocalDateTime start = LocalDateTime.now();
+		LocalDateTime end = start.plusMonths(3);
 
-	  duration.setType("DateRange");
-	  duration.setStart(start + "Z");
-	  duration.setEnd(end + "Z");
+		duration.setType("DateRange");
+		duration.setStart(start + "Z");
+		duration.setEnd(end + "Z");
 
-	  availability.setDuration(duration);
-	  availability.setAvailable("Yes");
+		availability.setDuration(duration);
+		availability.setAvailable("Yes");
 
-	  tempTm.setExternalId(RestConstants.TERM_ID);
-	  tempTm.setName(RestConstants.TERM_NAME);
-	  tempTm.setDescription(RestConstants.TERM_DESCRIPTION);
-	  tempTm.setDataSourceId(datasource.getId());
-	  tempTm.setAvailability(availability);
+		tempTm.setExternalId(RestConstants.TERM_ID);
+		tempTm.setName(RestConstants.TERM_NAME);
+		tempTm.setDescription(RestConstants.TERM_DESCRIPTION);
+		tempTm.setDataSourceId(datasource.getId());
+		tempTm.setAvailability(availability);
 
-	  Term term = ts.create(tempTm);
+		Term term = ts.create(tempTm);
 
-	  log.info("Term: " + term.toString());
+		log.info("Term: " + term.toString());
 
 	}
 
