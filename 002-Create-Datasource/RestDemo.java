@@ -32,8 +32,6 @@ public class RestDemo {
 
 	private static final Logger log = LoggerFactory.getLogger(RestDemo.class);
 
-	public static boolean DEVMODE = false;
-
 	public static void main(String[] args) {
 
 		log.info("Hello REST Workshop Participant!!!");

@@ -13,6 +13,7 @@ import bbdn.caching.CacheUtil;
 
 import bbdn.rest.announcement.*;
 import bbdn.rest.assignment.*;
+import bbdn.rest.attachment.*;
 import bbdn.rest.calendar.*;
 import bbdn.rest.column.*;
 import bbdn.rest.common.*;
@@ -32,8 +33,6 @@ public class RestDemo {
 
 	private static final Logger log = LoggerFactory.getLogger(RestDemo.class);
 
-	public static boolean DEVMODE = false;
-
 	public static void main(String[] args) {
 
 		log.info("Hello REST Workshop Participant!!!");
@@ -41,162 +40,36 @@ public class RestDemo {
 		/* Part One - Get Authorization Token */
 		Authorizer authorizer = new Authorizer();
 
-	  authorizer.authorize();
+	  	authorizer.authorize();
 
 		log.info("Token: " + CacheUtil.getValidToken());
 
-		/* Part Two - Create Datasource Key */
-	  DatasourceService dss = new DatasourceService();
-		/*Datasource tempDs = new Datasource();
-	  tempDs.setExternalId(RestConstants.DATASOURCE_ID);
-	  tempDs.setDescription(RestConstants.DATASOURCE_DESCRIPTION);
-
-	  Datasource datasource = dss.create(tempDs);
-
-	  log.info("Datasource: " + datasource.toString());*/
-
-		/* Part Three - Create a Term */
+		/* Part Two - Get Datasource Key */
+		DatasourceService dss = new DatasourceService();
+		  
 		Datasource datasource = dss.read("externalId:" + RestConstants.DATASOURCE_ID);
 
+		/* Part Three - Get Term */
 		TermService ts = new TermService();
 
-		/*Duration duration = new Duration();
-	  Availability availability = new Availability(true);
-
-	  LocalDateTime start = LocalDateTime.now();
-	  LocalDateTime end = start.plusMonths(3);
-
-	  duration.setType("DateRange");
-	  duration.setStart(start + "Z");
-	  duration.setEnd(end + "Z");
-
-	  availability.setDuration(duration);
-	  availability.setAvailable("Yes");
-
-		Term tempTm = new Term();
-
-	  tempTm.setExternalId(RestConstants.TERM_ID);
-	  tempTm.setName(RestConstants.TERM_NAME);
-	  tempTm.setDescription(RestConstants.TERM_DESCRIPTION);
-	  tempTm.setDataSourceId(datasource.getId());
-	  tempTm.setAvailability(availability);
-
-	  Term term = ts.create(tempTm);
-
-	  log.info("Term: " + term.toString());*/
-
-		/* Part Four - Create an Instructor */
 		Term term = ts.read("externalId:" + RestConstants.TERM_ID);
 
+		/* Part Four - Get Instructor */
 		UserService us = new UserService();
 
-		/* Availability availability = new Availability();
-		availability.setAvailable("Yes");
-
-		Contact contact = new Contact();
-		contact.setEmail(RestConstants.USER_PROF_EMAIL);
-
-		Name name = new Name();
-		name.setGiven(RestConstants.USER_PROF_GIVEN);
-		name.setFamily(RestConstants.USER_PROF_FAMILY);
-
-		User tempPr = new User();
-		tempPr.setExternalId(RestConstants.USER_PROF_ID);
-		tempPr.setDataSourceId(datasource.getId());
-		tempPr.setUserName(RestConstants.USER_PROF_NAME);
-		tempPr.setPassword(RestConstants.USER_PROF_PASS);
-		tempPr.setAvailability(availability);
-		tempPr.setContact(contact);
-		tempPr.setName(name);
-
-		User prof = us.create(tempPr);
-
-		log.info("Professor:" + prof.toString()); */
-
-		/* Part Five - Create the Student */
 		User prof = us.read("externalId:" + RestConstants.USER_PROF_ID);
 
-		/*Availability availability = new Availability();
-		availability.setAvailable("Yes");
-
-		Contact contact = new Contact();
-		contact.setEmail(RestConstants.USER_STUD_EMAIL);
-
-		Name name = new Name();
-		name.setGiven(RestConstants.USER_STUD_GIVEN);
-		name.setFamily(RestConstants.USER_STUD_FAMILY);
-
-		User tempSt = new User();
-		tempSt.setExternalId(RestConstants.USER_STUD_ID);
-		tempSt.setDataSourceId(datasource.getId());
-		tempSt.setUserName(RestConstants.USER_STUD_NAME);
-		tempSt.setPassword(RestConstants.USER_STUD_PASS);
-		tempSt.setAvailability(availability);
-		tempSt.setContact(contact);
-		tempSt.setName(name);
-
-		User stud = us.create(tempSt);
-
-		log.info("Student:" + stud.toString());*/
-
-		/* Part Six - Create A Course */
+		/* Part Five - Get the Student */
 		User stud = us.read("externalId:" + RestConstants.USER_STUD_ID);
 
+		/* Part Six - Get Course */
 		CourseService cs = new CourseService();
 
-		/*Duration duration = new Duration();
-	  Availability availability = new Availability(true);
-
-	  LocalDateTime start = LocalDateTime.now();
-	  LocalDateTime end = start.plusMonths(3);
-
-	  duration.setType("DateRange");
-	  duration.setStart(start + "Z");
-	  duration.setEnd(end + "Z");
-
-	  availability.setDuration(duration);
-	  availability.setAvailable("Yes");
-
-		Course tempCs = new Course();
-		tempCs.setExternalId(RestConstants.COURSE_ID);
-		tempCs.setCourseId(RestConstants.COURSE_ID);
-		tempCs.setName(RestConstants.COURSE_NAME);
-		tempCs.setDescription(RestConstants.COURSE_DESCRIPTION);
-		tempCs.setDataSourceId(datasource.getId());
-		tempCs.setTermId(term.getId());
-		tempCs.setAvailability(availability);
-
-		Course course = cs.create(tempCs);
-
-		log.info("Course:" + course.toString());*/
-
-		/* Part Seven - Enroll Users */
 		Course course = cs.read("externalId:" + RestConstants.COURSE_ID);
 
-		/*MembershipService ms = new MembershipService();
+		/* Part Seven - Enroll Users */
 
-		Availability availability = new Availability();
-		availability.setAvailable("Yes");
-
-		Membership tempPM = new Membership();
-		tempPM.setDataSourceId(datasource.getId());
-		tempPM.setAvailability(availability);
-		tempPM.setCourseRoleId("Instructor");
-
-		Membership pMembership = ms.create(tempPM, prof.getId(), course.getId());
-
-		log.info("Professor Membership:" + pMembership.toString());
-
-		Membership tempSM = new Membership();
-		tempSM.setDataSourceId(datasource.getId());
-		tempSM.setAvailability(availability);
-		tempSM.setCourseRoleId("Student");
-
-		Membership sMembership = ms.create(tempSM, stud.getId(), course.getId());
-
-		log.info("Student Membership:" + sMembership.toString());*/
-
-		/* Part Eight - Create a Folder */
+		/* Part Eight - Get Folder */
 		ContentService conS = new ContentService();
 		String parentId = "";
 
@@ -216,24 +89,7 @@ public class RestDemo {
 
 		log.info("ParentId:" + parentId);
 
-		/*Availability availability = new Availability();
-		availability.setAvailable("Yes");
-
-		ContentHandler contentHandler = new ContentHandler();
-		contentHandler.setId(RestConstants.CONTENT_FOLDER_HANDLER);
-
-		Content newFolder = new Content(true);
-		newFolder.setTitle(RestConstants.CONTENT_FOLDER_TITLE);
-		newFolder.setAvailability(availability);
-		newFolder.setContentHandler(contentHandler);
-		newFolder.setParentId(parentId);
-		newFolder.setDescription(RestConstants.CONTENT_FOLDER_DESCRIPTION);
-
-		Content folder = conS.createChildContent(newFolder, course.getId(), parentId);
-
-		log.info("Folder:" + folder.toString());*/
-
-		/* Part 9 - Upload a file and create an assignment */
+		/* Part 9 - Create an assignment */
 		List<Content> myFolders = conS.readAllChildContent(course.getId(), parentId);
 
 		log.info("My Folder:" + myFolders.toString());
@@ -252,20 +108,11 @@ public class RestDemo {
 
 		log.info("folderId:" + folderId);
 
-		String xid = "";
-
-		try {
-			xid = FileUploadUtil.uploadSingleFile();
-		} catch(Exception e) {
-			log.error("Exception uploading file");
-		}
-
-		log.info("XID:" + xid);
-
+		// Create the Assignment
 		AssignmentService aS = new AssignmentService();
 
 		LocalDateTime start = LocalDateTime.now();
-	  LocalDateTime end = start.plusMonths(3);
+	  	LocalDateTime end = start.plusMonths(3);
 
 		AdaptiveRelease adaptiveRelease = new AdaptiveRelease();
 		adaptiveRelease.setStart(start + "Z");
@@ -288,7 +135,6 @@ public class RestDemo {
 		newAssignment.setTitle(RestConstants.ASSIGNMENT_TITLE);
 		newAssignment.setInstructions(RestConstants.ASSIGNMENT_INSTRUCTIONS);
 		newAssignment.setDescription(RestConstants.ASSIGNMENT_DESCRIPTION);
-		newAssignment.setFileUploadIds(new String[] {xid});
 		newAssignment.setAvailability(availability);
 		newAssignment.setGrading(grading);
 		newAssignment.setScore(score);

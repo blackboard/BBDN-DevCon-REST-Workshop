@@ -209,7 +209,9 @@ public class NewAssignment extends BaseObject {
 		String avl = availability != null ? availability.toString() : "null";
 		String gr = grading != null ? grading.toString() : "null";
 		String sc = score != null ? score.toString() : "null";
+		String att = fileUploadIds != null ? fileUploadIds.toString() : "null";
+		
 
-		return "NewAssignment [parentId=" + parentId + ", title=" + title + ", instructions=" + instructions + ", description=" + description + ", position=" + position + ", fileUploadIds=" + fileUploadIds.toString() + ", availability=" + avl + ", grading=" + gr + ", score=" + sc + "]";
+		return "NewAssignment [parentId=" + parentId + ", title=" + title + ", instructions=" + instructions + ", description=" + description + ", position=" + position + ", fileUploadIds=" + att + ", availability=" + avl + ", grading=" + gr + ", score=" + sc + "]";
 	}
 }

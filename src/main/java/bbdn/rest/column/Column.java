@@ -18,8 +18,11 @@ public class Column extends BaseObject {
 	@JsonProperty("name")
 	private String name;
 
+	@JsonProperty("externalGrade")
+	private Boolean externalGrade;
+
 	public Column() {
-		
+		externalGrade = false;
 	}
 
 	/**
@@ -55,11 +58,27 @@ public class Column extends BaseObject {
 	}
 
 	/**
+	* Returns value of type
+	* @return
+	*/
+	public Boolean isExternalGrade() {
+		return externalGrade;
+	}
+
+	/**
+	* Sets new value of type
+	* @param
+	*/
+	public void setExternalGrade(Boolean externalGrade) {
+		this.externalGrade = externalGrade;
+	}
+
+	/**
 	* Create string representation of Calendar for printing
 	* @return
 	*/
 	@Override
 	public String toString() {
-		return "Column [id=" + id + ", name=" + name + ", " + super.toString() + "]";
+		return "Column [id=" + id + ", name=" + name + ", externalGrade=" + externalGrade.toString() + "," + super.toString() + "]";
 	}
 }

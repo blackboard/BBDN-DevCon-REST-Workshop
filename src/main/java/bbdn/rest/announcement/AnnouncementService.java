@@ -47,9 +47,9 @@ public class AnnouncementService {
 	 * @param fields: a string array containing any fields to filter the returned data.
 	 * @return The @see #Announcement object returned from the API call.
 	 */
-	public Announcement create(Announcement announcement) {
+	public Announcement create(Announcement announcement, String crsId) {
 		log.info("CREATE");
-		String endpoint = RestConstants.ANNOUNCEMENT_PATH;
+		String endpoint = RestConstants.ANNOUNCEMENT_PATH + "/" + crsId + "/announcements";
 
 		List<Announcement> announcements = sendRequest(endpoint, HttpMethod.POST, announcement, false);
 
@@ -84,21 +84,6 @@ public class AnnouncementService {
 		log.info("READALL");
 
 		String endpoint = RestConstants.ANNOUNCEMENT_PATH + "/" + crsId + "/announcements";
-
-		List<Announcement> announcements = sendRequest(endpoint, HttpMethod.GET, new Announcement(), true);
-
-		log.info("Size of READALL announcements: " + String.valueOf(announcements.size()));
-		log.info("First READALL Result: " + announcements.get(0));
-		log.info("Last READALL Result: " + announcements.get(announcements.size()-1));
-
-		return(announcements);
-	}
-
-	public List<Announcement> readAllChildAnnouncement(String crsId, String parentId) {
-		log.info("READALL");
-
-		String endpoint = RestConstants.ANNOUNCEMENT_PATH + "/" + crsId + "/announcements/" +
-			parentId + "/children";
 
 		List<Announcement> announcements = sendRequest(endpoint, HttpMethod.GET, new Announcement(), true);
 

@@ -19,7 +19,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
-import bbdn.rest.RestDemo;
+import bbdn.rest.RestConfig;
 
 public abstract class UnSecurityUtil {
 
@@ -29,7 +29,7 @@ public abstract class UnSecurityUtil {
 		HttpComponentsClientHttpRequestFactory requestFactory =
 		        new HttpComponentsClientHttpRequestFactory();
 
-		if(RestDemo.DEVMODE) {
+		if(!RestConfig.secure) {
 			TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 
 			SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom()

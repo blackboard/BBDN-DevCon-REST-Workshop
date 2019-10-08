@@ -49,7 +49,7 @@ public abstract class RestConstants {
 	public final static String CALENDAR_TITLE = "My Calendar Item";
 	public final static String CALENDAR_DESCRIPTION = "The Calendar Item created as part of the REST workshop.";
 
-	public final static String ANNOUNCEMENT_PATH = "/learn/api/public/v1/announcements";
+	public final static String ANNOUNCEMENT_PATH = "/learn/api/public/v1/courses";
 	public final static String ANNOUNCEMENT_TITLE = "My Announcement";
 	public final static String ANNOUNCEMENT_BODY = "The announcement created as part of the REST workshop.";
 
