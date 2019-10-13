@@ -1,31 +1,33 @@
 package bbdn.rest;
 
+import bbdn.rest.RestConfig;
+
 public abstract class RestConstants {
 
 	public final static String AUTH_PATH = "/learn/api/public/v1/oauth2/token";
 
 	public final static String DATASOURCE_PATH = "/learn/api/public/v1/dataSources";
-	public final static String DATASOURCE_ID = "BBDN-DSK-JAVA";
+	public final static String DATASOURCE_ID = "BBDN-DSK-JAVA" + RestConfig.key;
 	public final static String DATASOURCE_DESCRIPTION = "My REST Application's Datasource Key";
 
 	public final static String TERM_PATH = "/learn/api/public/v1/terms";
-	public final static String TERM_ID = "BBDN-TERM-SPRING";
+	public final static String TERM_ID = "BBDN-TERM-SPRING" + RestConfig.key;
 	public final static String TERM_NAME = "Spring 2018 Term";
 	public final static String TERM_DESCRIPTION = "This is the term for Spring 2018";
 
 	public final static String COURSE_PATH = "/learn/api/public/v2/courses";
-	public final static String COURSE_ID = "BIO-101";
+	public final static String COURSE_ID = "BIO-101" + RestConfig.key;
 	public final static String COURSE_NAME = "Introduction to Biology";
 	public final static String COURSE_DESCRIPTION = "This course will serve as an introduction to the wonderful world of biology.";
 
 	public final static String USER_PATH = "/learn/api/public/v1/users";
-	public final static String USER_PROF_ID = "ProfessorPlum";
+	public final static String USER_PROF_ID = "ProfessorPlum" + RestConfig.key;
 	public final static String USER_PROF_NAME = "professorplum";
 	public final static String USER_PROF_PASS = "Bl@ckb0ard!";
 	public final static String USER_PROF_GIVEN = "Professor";
 	public final static String USER_PROF_FAMILY = "Plum";
 	public final static String USER_PROF_EMAIL = "professor.plum@myschool.edu";
-	public final static String USER_STUD_ID = "AwesomeStudent";
+	public final static String USER_STUD_ID = "AwesomeStudent" + RestConfig.key;
 	public final static String USER_STUD_NAME = "awesomestudent";
 	public final static String USER_STUD_PASS = "Bl@ckb0ard!";
 	public final static String USER_STUD_GIVEN = "Awesome";
